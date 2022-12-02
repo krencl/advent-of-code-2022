@@ -1,0 +1,20 @@
+{
+    "name": "krencl/advent-of-code-2022",
+    "description": "https://adventofcode.com/2022",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Krencl\\AdventOfCode2022\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Krencl"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "symfony/console": "^6.2",
+        "symfony/error-handler": "^6.2"
+    }
+}

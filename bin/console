@@ -1,0 +1,24 @@
+#!/usr/bin/php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Attribute\AsCommand;
+use Symfony\Component\ErrorHandler\Debug;
+
+Debug::enable();
+
+$application = new Application();
+
+foreach (glob(__DIR__ . '/../src/Command/*Command.php') as $file) {
+    $className = 'Krencl\\AdventOfCode2022\\Command\\' . preg_replace('~\.php$~', '', basename($file));
+
+    $reflection = new ReflectionClass($className);
+	$attributes = $reflection->getAttributes(AsCommand::class);
+    if (count($attributes) > 0) {
+        $application->add(new $className());
+    }
+}
+
+$application->run();
